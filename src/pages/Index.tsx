@@ -1,36 +1,53 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Award } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChevronRight, Award, Code, Database, Globe, Users, Plus, Minus } from "lucide-react";
 
 const Index = () => {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   const awards = [
-    { year: "2015", award: "Sony World Photography Awards" },
-    { year: "2017", award: "Travel Photographer Of The Year" },
-    { year: "2022", award: "Magnum Photography Awards" },
-    { year: "2023", award: "International Photography Awards" },
+    { year: "2023", award: "Digital Transformation Excellence Award" },
+    { year: "2022", award: "National Innovation in Technology" },
+    { year: "2021", award: "Best Digital Service Platform" },
   ];
 
-  const portfolioItems = [
+  const services = [
     {
-      title: "Majestic Creatures of the African Savanna",
-      category: "Wildlife",
-      image: "https://images.unsplash.com/photo-1498936178812-4b2e558d2937",
+      icon: <Globe className="w-8 h-8" />,
+      title: "Digital Services",
+      description: "Streamlined government services accessible to all citizens",
     },
     {
-      title: "A Temple's Serene Silhouette",
-      category: "Architecture",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+      icon: <Database className="w-8 h-8" />,
+      title: "Open Data",
+      description: "Transparent access to public data for research and development",
     },
     {
-      title: "Moments Framed in Portraits",
-      category: "Portrait",
-      image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f",
+      icon: <Code className="w-8 h-8" />,
+      title: "Developer Tools",
+      description: "APIs and tools for building the next generation of applications",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "What is Algeria's digital transformation initiative?",
+      answer: "It's a comprehensive program aimed at modernizing public services, providing digital access to government resources, and fostering innovation in the technology sector.",
+    },
+    {
+      question: "How can developers access the APIs?",
+      answer: "Developers can register through our developer portal to get API keys and access comprehensive documentation for all available services.",
+    },
+    {
+      question: "What kind of data is available through the platform?",
+      answer: "We provide access to various types of public data including demographic statistics, economic indicators, and geographical information, all while ensuring privacy and security.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-primary text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
 
       {/* Hero Section */}
@@ -38,17 +55,17 @@ const Index = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url(https://images.unsplash.com/photo-1472396961693-142e6e269027)",
+            backgroundImage: "url(https://images.unsplash.com/photo-1590846083693-f23fdede3a7e)",
           }}
         >
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-primary/50 dark:bg-primary/70" />
         </div>
         <div className="container relative z-10 pt-20">
-          <h1 className="text-5xl md:text-7xl font-bold max-w-3xl mb-8 animate-fadeIn">
-            Capturing beautiful moment inside lens and shutterspeed
+          <h1 className="text-5xl md:text-7xl font-bold max-w-3xl mb-8 animate-fadeIn text-white">
+            Building a Digital Future for Algeria
           </h1>
           <div className="flex flex-wrap gap-4 mb-8">
-            {["Landscape", "Wildlife", "Portrait", "Street"].map((category) => (
+            {["Innovation", "Transparency", "Accessibility", "Development"].map((category) => (
               <span
                 key={category}
                 className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full"
@@ -60,62 +77,35 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 bg-secondary">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Photography{" "}
-              <span className="text-secondary-foreground">
-                is driven by a deep passion for capturing life's most precious
-                moments with artistry and a touch of magic
-              </span>
-            </h2>
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-              Learn More
-              <ChevronRight className="ml-2" size={16} />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Section */}
-      <section className="py-20">
+      {/* Services Section */}
+      <section className="py-20 bg-secondary dark:bg-primary/10">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Explore the artistry and precision behind our{" "}
-            <span className="text-accent">portfolio</span> of timeless photography
+            Empowering Algeria's{" "}
+            <span className="text-primary dark:text-accent">Digital Future</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {portfolioItems.map((item) => (
-              <div
-                key={item.title}
-                className="group relative overflow-hidden rounded-lg aspect-[4/3]"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 p-6">
-                    <div className="text-sm text-accent mb-2">{item.category}</div>
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                  </div>
-                </div>
-              </div>
+            {services.map((service) => (
+              <Card key={service.title} className="border-2 hover:border-accent transition-colors duration-300">
+                <CardHeader>
+                  <div className="mb-4 text-primary dark:text-accent">{service.icon}</div>
+                  <CardTitle>{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{service.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Awards Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Award is a pixel that{" "}
-            <span className="text-accent">reflecting our ongoing dedication</span>{" "}
-            to innovation and excellence
+            Recognition for{" "}
+            <span className="text-primary dark:text-accent">Digital Excellence</span>
           </h2>
           <div className="max-w-2xl mx-auto">
             {awards.map((item, index) => (
@@ -124,15 +114,49 @@ const Index = () => {
                 className="flex items-center gap-6 mb-8 animate-slideUp"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-2xl font-bold text-accent">
+                <div className="text-2xl font-bold text-primary dark:text-accent">
                   {item.year}
                 </div>
-                <div className="flex-1 p-6 bg-primary rounded-lg">
+                <div className="flex-1 p-6 bg-secondary dark:bg-primary/10 rounded-lg">
                   <div className="flex items-center gap-4">
-                    <Award className="text-accent" />
+                    <Award className="text-primary dark:text-accent" />
                     <span>{item.award}</span>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-secondary dark:bg-primary/10">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="max-w-2xl mx-auto space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="border-2 rounded-lg overflow-hidden transition-all duration-200 hover:border-accent"
+              >
+                <button
+                  className="w-full p-4 text-left flex justify-between items-center"
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                >
+                  <span className="font-medium">{faq.question}</span>
+                  {openFaq === index ? (
+                    <Minus className="w-5 h-5 text-primary dark:text-accent" />
+                  ) : (
+                    <Plus className="w-5 h-5 text-primary dark:text-accent" />
+                  )}
+                </button>
+                {openFaq === index && (
+                  <div className="p-4 pt-0 text-muted-foreground">
+                    {faq.answer}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -144,39 +168,50 @@ const Index = () => {
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Let's{" "}
-              <span className="text-accent">discuss</span> your vision with us
+              Let's Build the{" "}
+              <span className="text-primary dark:text-accent">Digital Future</span>{" "}
+              Together
             </h2>
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-              Let's Talk
-              <ChevronRight className="ml-2" size={16} />
-            </Button>
+            <p className="mb-8 text-muted-foreground">
+              Join us in transforming Algeria's digital landscape. Whether you're a developer,
+              business owner, or citizen, we're here to support your digital journey.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
+                Developer Portal
+                <Code className="ml-2" size={16} />
+              </Button>
+              <Button className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
+                Contact Us
+                <ChevronRight className="ml-2" size={16} />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-secondary">
+      <footer className="py-12 bg-secondary dark:bg-primary/10">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-2xl font-bold mb-4 md:mb-0">CREACY</div>
+            <div className="text-2xl font-bold mb-4 md:mb-0">Digital Algeria</div>
             <div className="flex gap-8">
-              <a href="#" className="hover:text-accent transition-colors">
-                About Us
+              <a href="#" className="hover:text-primary dark:hover:text-accent transition-colors">
+                About
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                Project
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="#" className="hover:text-primary dark:hover:text-accent transition-colors">
                 Services
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                Terms
+              <a href="#" className="hover:text-primary dark:hover:text-accent transition-colors">
+                Developers
+              </a>
+              <a href="#" className="hover:text-primary dark:hover:text-accent transition-colors">
+                Contact
               </a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-secondary-foreground">
-            ©2023 All Rights Reserved
+          <div className="mt-8 pt-8 border-t border-primary/10 text-center text-muted-foreground">
+            ©2024 Digital Algeria. All Rights Reserved
           </div>
         </div>
       </footer>

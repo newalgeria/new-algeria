@@ -25,16 +25,16 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1A1A1A",
+          DEFAULT: "#0D8A59", // Algerian green
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#2A2A2A",
-          foreground: "#CCCCCC",
+          DEFAULT: "#F5F7F5", // Light green-tinted white
+          foreground: "#1A1A1A",
         },
         accent: {
-          DEFAULT: "#FFCC00",
-          foreground: "#000000",
+          DEFAULT: "#14B87C", // Brighter green for emphasis
+          foreground: "#FFFFFF",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -57,10 +57,16 @@ export default {
           "0%": { transform: "translateY(100px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
+        borderGlow: {
+          "0%": { borderColor: "transparent" },
+          "50%": { borderColor: "#14B87C" },
+          "100%": { borderColor: "transparent" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.5s ease-in-out",
         slideUp: "slideUp 0.5s ease-out",
+        borderGlow: "borderGlow 2s ease-in-out infinite",
       },
     },
   },
