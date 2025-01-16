@@ -2,12 +2,16 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronRight, Award, Code, Database, Globe, Users, Plus, Minus } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Award, Code, Database, Globe, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Index = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -167,12 +171,12 @@ const Index = () => {
                 <div className="text-2xl font-bold text-primary dark:text-accent">
                   {item.year}
                 </div>
-                <div className="flex-1 p-6 bg-secondary dark:bg-primary/10 rounded-lg">
-                  <div className="flex items-center gap-4">
+                <Card className="flex-1">
+                  <CardContent className="flex items-center gap-4 p-6">
                     <Award className="text-primary dark:text-accent" />
                     <span>{item.award}</span>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
@@ -185,30 +189,19 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             Frequently Asked Questions
           </h2>
-          <div className="max-w-2xl mx-auto space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border-2 rounded-lg overflow-hidden transition-all duration-200 hover:border-accent"
-              >
-                <button
-                  className="w-full p-4 text-left flex justify-between items-center"
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                >
-                  <span className="font-medium">{faq.question}</span>
-                  {openFaq === index ? (
-                    <Minus className="w-5 h-5 text-primary dark:text-accent" />
-                  ) : (
-                    <Plus className="w-5 h-5 text-primary dark:text-accent" />
-                  )}
-                </button>
-                {openFaq === index && (
-                  <div className="p-4 pt-0 text-muted-foreground">
+          <div className="max-w-2xl mx-auto">
+            <Accordion type="single" collapsible>
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
                     {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
@@ -227,11 +220,11 @@ const Index = () => {
               business owner, or citizen, we're here to support your digital journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
                 Developer Portal
                 <Code className="ml-2" size={16} />
               </Button>
-              <Button className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
                 Contact Us
                 <ChevronRight className="ml-2" size={16} />
               </Button>
@@ -265,7 +258,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-
     </div>
   );
 };
