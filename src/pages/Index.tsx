@@ -3,9 +3,25 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight, Award, Code, Database, Globe, Users, Plus, Minus } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   const awards = [
     { year: "2023", award: "Digital Transformation Excellence Award" },
@@ -51,7 +67,12 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center relative overflow-hidden">
+      <motion.section 
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="min-h-screen flex items-center relative overflow-hidden"
+      >
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -61,44 +82,73 @@ const Index = () => {
           <div className="absolute inset-0 bg-primary/50 dark:bg-primary/70" />
         </div>
         <div className="container relative z-10 pt-20">
-          <h1 className="text-5xl md:text-7xl font-bold max-w-3xl mb-8 animate-fadeIn text-white">
+          <motion.h1 
+            variants={itemVariants}
+            className="text-5xl md:text-7xl font-bold max-w-3xl mb-8 text-white"
+          >
             Building a Digital Future for Algeria
-          </h1>
-          <div className="flex flex-wrap gap-4 mb-8">
+          </motion.h1>
+          <motion.div 
+            variants={containerVariants}
+            className="flex flex-wrap gap-4 mb-8"
+          >
             {["Innovation", "Transparency", "Accessibility", "Development"].map((category) => (
-              <span
+              <motion.span
                 key={category}
+                variants={itemVariants}
                 className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full"
               >
                 {category}
-              </span>
+              </motion.span>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Section */}
-      <section className="py-20 bg-secondary dark:bg-primary/10">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-20 bg-secondary dark:bg-primary/10"
+      >
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+          <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+          >
             Empowering Algeria's{" "}
             <span className="text-primary dark:text-accent">Digital Future</span>
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          </motion.h2>
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             {services.map((service) => (
-              <Card key={service.title} className="border-2 hover:border-accent transition-colors duration-300">
-                <CardHeader>
-                  <div className="mb-4 text-primary dark:text-accent">{service.icon}</div>
-                  <CardTitle>{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{service.description}</p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={service.title}
+                variants={itemVariants}
+              >
+                <Card className="border-2 hover:border-accent transition-colors duration-300">
+                  <CardHeader>
+                    <div className="mb-4 text-primary dark:text-accent">{service.icon}</div>
+                    <CardTitle>{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Awards Section */}
       <section className="py-20">
@@ -215,6 +265,7 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
     </div>
   );
 };
