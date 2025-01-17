@@ -22,11 +22,14 @@ const Navigation = () => {
     <nav className="fixed w-full z-50 bg-background/90 backdrop-blur-sm border-b border-primary/10">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          <div className="text-2xl font-bold text-primary dark:text-accent">Digital Algeria</div>
-          
+          <div className="text-2xl font-bold text-primary dark:text-accent flex flex-row items-center space-x-2">
+            <img src="src/img/logo.png" alt="Logo" className="h-12 rounded-full opacity-75" />
+            <h3>New Algeria</h3>
+          </div>
+
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
+            {/* {menuItems.map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -34,7 +37,7 @@ const Navigation = () => {
               >
                 {item}
               </a>
-            ))}
+            ))} */}
             <Button
               variant="outline"
               size="icon"
@@ -50,11 +53,7 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={toggleTheme}
-            >
+            <Button variant="outline" size="icon" onClick={toggleTheme}>
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </Button>
             <button
