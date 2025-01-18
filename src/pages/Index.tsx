@@ -321,13 +321,13 @@ const Index = () => {
               support your digital journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
+              {/* <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90"
               >
                 Developer Portal
                 <Code className="ml-2" size={16} />
-              </Button>
+              </Button> */}
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90"
