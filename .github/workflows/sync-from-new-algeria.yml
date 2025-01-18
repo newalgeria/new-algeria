@@ -1,0 +1,51 @@
+name: Sync New-algeria Github Org Repository
+
+on:
+  workflow_dispatch:  # For manual trigger if needed
+  # schedule:
+    # - cron: '0 */2 * * *'
+  # push:
+  #   branches: [ main ]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}  # Personal access token with repo scope
+  
+      - name: Set up Git identity
+        run: |
+          git config --global user.email "newalgeria.org@gmail.com"
+          git config --global user.name "newalgeria"
+
+      - name: Backup current workflows
+        run: |
+          mkdir -p /tmp/workflows_backup
+          cp -r .github/workflows/* /tmp/workflows_backup/
+
+      - name: Sync from source
+        run: |
+          git remote add source https://github.com/new-algeria/new-algeria.org.git
+          git fetch source main
+          
+          # Merge source main, preferring their changes but keeping ours
+          git merge -X theirs source/main --allow-unrelated-histories
+
+          # Restore workflow files if needed
+          if [ ! -d ".github/workflows" ]; then
+            mkdir -p .github/workflows
+            cp -r /tmp/workflows_backup/* .github/workflows/
+            git add .github/workflows
+            git commit -m "Restore workflows after sync"
+          # elif diff -qr .github/workflows/ /tmp/workflows_backup/ | grep -q differ; then
+          #   cp -r /tmp/workflows_backup/* .github/workflows/
+          #   git add .github/workflows
+          #   git commit -m "Update workflows to match backup"
+          
+          fi
+          
+          git push --force origin main
