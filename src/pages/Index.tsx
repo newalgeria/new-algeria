@@ -34,7 +34,7 @@ const Index = () => {
           <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
             Built and launched Data-dz from scratch
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-3">
             <img
               src="/assets/img/data-dz-1.png"
               alt="startup template"
@@ -42,18 +42,7 @@ const Index = () => {
               height={500}
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
-            <img
-              src="/assets/img/data-dz-2.png"
-              alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <img
-              src="/assets/img/data-dz-3.png"
-              alt="startup template"
-              width={500}
-              height={500}
+            <video src="https://github.com/newalgeria/new-algeria/releases/download/0.0.0/data-dz.mp4" autoPlay loop muted
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             </div>
@@ -61,10 +50,6 @@ const Index = () => {
       ),
     },
   ]
-
-  const historic = [
-    { year: "2024", historyAct: "Data-dz Launched" },
-  ];
 
   const services = [
     {
@@ -74,9 +59,9 @@ const Index = () => {
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: "Open Data",
+      title: "Useful Datasets",
       description:
-        "Transparent access to public data for research and development",
+        "Access to useful data for research and development",
     },
     {
       icon: <Code className="w-8 h-8" />,
@@ -294,25 +279,8 @@ const Index = () => {
               profileUrl: "https://github.com/berachem",
             }]} 
           />
-          <Timeline data={timelineData}/>
-            {historic.map((item, index) => (
-              <div
-                key={item.year}
-                className="flex items-center gap-6 mb-8 animate-slideUp"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-2xl font-bold text-primary dark:text-accent">
-                  {item.year}
-                </div>
-                <Card className="flex-1">
-                  <CardContent className="flex items-center gap-4 p-6">
-                    <Award className="text-primary dark:text-accent" />
-                    <span>{item.historyAct}</span>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
           </div>
+            <Timeline data={timelineData}/>
         </div>
       </section>
 
