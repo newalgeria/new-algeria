@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/img/logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +23,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <div className="text-2xl font-bold text-primary dark:text-accent flex flex-row items-center space-x-2">
-            <img src={logo} alt="Logo" className="h-12 rounded-full opacity-75" />
+            <img src="/assets/img/logo.png" alt="Logo" className="h-12 rounded-full opacity-75" />
             <h3>New Algeria</h3>
           </div>
 

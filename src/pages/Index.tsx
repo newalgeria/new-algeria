@@ -8,6 +8,7 @@ import { Award, Code, Database, Globe, ChevronRight, Laptop, Shield, Users } fro
 import AvatarCircles from "@/components/ui/avatar-circles";
 import { motion } from "framer-motion";
 import { useYear } from "@/hooks/use-year";
+import { Timeline } from "@/components/ui/timeline";
 
 const Index = () => {
   const containerVariants = {
@@ -25,11 +26,44 @@ const Index = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const timelineData = [
+    {
+      title: "2024",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Built and launched Data-dz from scratch
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
+            <img
+              src="/assets/img/data-dz-1.png"
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="/assets/img/data-dz-2.png"
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <img
+              src="/assets/img/data-dz-3.png"
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            </div>
+        </div>
+      ),
+    },
+  ]
+
   const historic = [
     { year: "2024", historyAct: "Data-dz Launched" },
-    // { year: "2023", historyAct: "Digital Transformation Excellence historyAct" },
-    // { year: "2022", historyAct: "National Innovation in Technology" },
-    // { year: "2021", historyAct: "Best Digital Service Platform" },
   ];
 
   const services = [
@@ -91,7 +125,7 @@ const Index = () => {
     },
   ];
 
-  const { year, loading, error } = useYear();
+  const { year } = useYear();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -124,7 +158,7 @@ const Index = () => {
             variants={containerVariants}
             className="flex flex-wrap gap-4 mb-8"
           >
-            {["Innovation", "Transparency", "Accessibility", "Development"].map(
+            {["Innovation", "Forward-Thinking", "Accessibility", "Development"].map(
               (category) => (
                 <motion.span
                   key={category}
@@ -260,6 +294,7 @@ const Index = () => {
               profileUrl: "https://github.com/berachem",
             }]} 
           />
+          <Timeline data={timelineData}/>
             {historic.map((item, index) => (
               <div
                 key={item.year}
