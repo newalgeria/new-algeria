@@ -29,9 +29,46 @@
       "description": "APIs and tools for building the next generation of applications"
     }
   },
+  "innovation": {
+    "title": "Driving Digital Innovation",
+    "infrastructure": {
+      "title": "Digital Infrastructure",
+      "description": "Building robust digital foundations for Algeria's future"
+    },
+    "security": {
+      "title": "Cybersecurity",
+      "description": "Ensuring the safety and security of digital assets"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Fostering a vibrant digital community"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "what": {
+        "question": "What is Algeria's digital transformation initiative ?",
+        "answer": "It's a comprehensive program aimed at modernizing public services, providing digital access to government resources, and fostering innovation in the technology sector."
+      },
+      "api": {
+        "question": "How can developers access the APIs ?",
+        "answer": "Developers can register through our developer portal to get API keys and access comprehensive documentation for all available services."
+      },
+      "data": {
+        "question": "What kind of data is available through the platform ?",
+        "answer": "We provide access to various types of public data including demographic statistics, economic indicators, and geographical information, all while ensuring privacy and security."
+      }
+    }
+  },
   "contact": {
-    "title": "Contact Us",
+    "title": "Let's Build the Digital Future Together",
+    "description": "Join us in transforming Algeria's digital landscape. Whether you're a developer, business owner, or citizen, we're here to support your digital journey.",
+    "button": "Contact Us",
     "subject": "Contact Request - New Algeria Digital Platform",
     "body": "Hello,\n\nI am interested in learning more about the New Algeria Digital Platform.\n\nBest regards,"
+  },
+  "footer": {
+    "copyright": "Digital Algeria. All Rights Reserved"
   }
 }

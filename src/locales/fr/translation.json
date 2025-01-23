@@ -29,9 +29,46 @@
       "description": "APIs et outils pour construire la prochaine génération d'applications"
     }
   },
+  "innovation": {
+    "title": "Stimuler l'Innovation Numérique",
+    "infrastructure": {
+      "title": "Infrastructure Numérique",
+      "description": "Construire des fondations numériques robustes pour l'avenir de l'Algérie"
+    },
+    "security": {
+      "title": "Cybersécurité",
+      "description": "Assurer la sûreté et la sécurité des actifs numériques"
+    },
+    "community": {
+      "title": "Communauté",
+      "description": "Favoriser une communauté numérique dynamique"
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées",
+    "items": {
+      "what": {
+        "question": "Qu'est-ce que l'initiative de transformation numérique de l'Algérie ?",
+        "answer": "C'est un programme complet visant à moderniser les services publics, à fournir un accès numérique aux ressources gouvernementales et à favoriser l'innovation dans le secteur technologique."
+      },
+      "api": {
+        "question": "Comment les développeurs peuvent-ils accéder aux APIs ?",
+        "answer": "Les développeurs peuvent s'inscrire via notre portail pour obtenir des clés API et accéder à la documentation complète de tous les services disponibles."
+      },
+      "data": {
+        "question": "Quel type de données est disponible via la plateforme ?",
+        "answer": "Nous donnons accès à diverses données publiques, notamment des statistiques démographiques, des indicateurs économiques et des informations géographiques, tout en garantissant la confidentialité et la sécurité."
+      }
+    }
+  },
   "contact": {
-    "title": "Contactez-nous",
+    "title": "Construisons Ensemble l'Avenir Numérique",
+    "description": "Rejoignez-nous dans la transformation du paysage numérique algérien. Que vous soyez développeur, chef d'entreprise ou citoyen, nous sommes là pour soutenir votre parcours numérique.",
+    "button": "Contactez-nous",
     "subject": "Demande de Contact - Plateforme Numérique Nouvelle Algérie",
     "body": "Bonjour,\n\nJe suis intéressé(e) par en savoir plus sur la Plateforme Numérique Nouvelle Algérie.\n\nCordialement,"
+  },
+  "footer": {
+    "copyright": "Digital Algeria. Tous droits réservés"
   }
 }

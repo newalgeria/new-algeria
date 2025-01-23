@@ -74,38 +74,35 @@ const Index = () => {
 
   const faqs = [
     {
-      question: "What is Algeria's digital transformation initiative ?",
-      answer:
-        "It's a comprehensive program aimed at modernizing public services, providing digital access to government resources, and fostering innovation in the technology sector.",
+      question: t('faq.items.what.question'),
+      answer: t('faq.items.what.answer'),
     },
     {
-      question: "How can developers access the APIs ?",
-      answer:
-        "Developers can register through our developer portal to get API keys and access comprehensive documentation for all available services.",
+      question: t('faq.items.api.question'),
+      answer: t('faq.items.api.answer'),
     },
     {
-      question: "What kind of data is available through the platform ?",
-      answer:
-        "We provide access to various types of public data including demographic statistics, economic indicators, and geographical information, all while ensuring privacy and security.",
+      question: t('faq.items.data.question'),
+      answer: t('faq.items.data.answer'),
     },
   ];
 
   const bentoItems = [
     {
-      title: "Digital Infrastructure",
-      description: "Building robust digital foundations for Algeria's future",
+      title: t('innovation.infrastructure.title'),
+      description: t('innovation.infrastructure.description'),
       icon: <Laptop className="w-8 h-8" />,
       color: "bg-emerald-500/10",
     },
     {
-      title: "Cybersecurity",
-      description: "Ensuring the safety and security of digital assets",
+      title: t('innovation.security.title'),
+      description: t('innovation.security.description'),
       icon: <Shield className="w-8 h-8" />,
       color: "bg-blue-500/10",
     },
     {
-      title: "Community",
-      description: "Fostering a vibrant digital community",
+      title: t('innovation.community.title'),
+      description: t('innovation.community.description'),
       icon: <Users className="w-8 h-8" />,
       color: "bg-purple-500/10",
     },
@@ -219,8 +216,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-12 text-center"
           >
-            Driving Digital{" "}
-            <span className="text-primary dark:text-accent">Innovation</span>
+            {t('innovation.title')}
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-6">
             {bentoItems.map((item, index) => (
@@ -257,36 +253,11 @@ const Index = () => {
         </div>
       </motion.section>
 
-      {/* historic Section */}
-      <section className="py-20">
-        <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Digital excellence{" "}
-            <span className="text-primary dark:text-accent">
-              by Algerians
-            </span>
-          </h2>
-          <div className="max-w-2xl mx-auto flex flex-col justify-center items-center gap-2">
-          <AvatarCircles className="text-xl py-4" numPeople={0} avatarUrls={[
-            {
-              imageUrl: "https://avatars.githubusercontent.com/u/102315258?v=4",
-              profileUrl: "https://github.com/prosabd",
-            },
-            {
-              imageUrl: "https://avatars.githubusercontent.com/u/61350744?v=4",
-              profileUrl: "https://github.com/berachem",
-            }]} 
-          />
-          </div>
-            <Timeline data={timelineData}/>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-20 bg-secondary dark:bg-primary/10">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Frequently Asked Questions
+            {t('faq.title')}
           </h2>
           <div className="max-w-2xl mx-auto">
             <Accordion type="single" collapsible>
@@ -310,30 +281,17 @@ const Index = () => {
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              Let's Build the{" "}
-              <span className="text-primary dark:text-accent">
-                Digital Future
-              </span>{" "}
-              Together
+              {t('contact.title')}
             </h2>
             <p className="mb-8 text-muted-foreground">
-              Join us in transforming Algeria's digital landscape. Whether
-              you're a developer, business owner, or citizen, we're here to
-              support your digital journey.
+              {t('contact.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90"
-              >
-                Developer Portal
-                <Code className="ml-2" size={16} />
-              </Button> */}
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90"
               >
-                Contact Us
+                {t('contact.button')}
                 <ChevronRight className="ml-2" size={16} />
               </Button>
             </div>
@@ -342,7 +300,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-        <footer className="container mt-10 flex flex-wrap justify-between pb-16 pt-10 mt-20">
+      <footer className="container mt-10 flex flex-wrap justify-between pb-16 pt-10 mt-20">
         <div className="flex basis-full justify-between gap-8 md:basis-auto md:flex-col md:justify-start">
           <div className="flex items-center gap-5">
             <a href="https://github.com/new-algeria" className="text-muted-foreground hover:text-foreground">
@@ -388,69 +346,30 @@ const Index = () => {
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Features
           </a>
-          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Integrations
-          </a> */}
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Pricing
           </a>
-          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Changelog
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Docs
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Download
-          </a> */}
         </div>
         <div className="mt-10 flex basis-1/2 flex-col gap-5 md:mt-0 md:basis-auto">
           <h3 className="font-semibold">Company</h3>
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             About us
           </a>
-          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Blog
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Careers
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Customers
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Brand
-          </a> */}
         </div>
         <div className="mt-10 flex basis-1/2 flex-col gap-5 md:mt-0 md:basis-auto">
           <h3 className="font-semibold">Resources</h3>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Startup Program
-          </a>
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Community
           </a>
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Contact
           </a>
-          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            DPA
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Privacy Policy
-          </a>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Terms of service
-          </a> */}
         </div>
         <div className="mt-10 flex basis-1/2 flex-col gap-5 md:mt-0 md:basis-auto">
           <h3 className="font-semibold">Developers</h3>
           <a href="/api" className="text-sm text-muted-foreground hover:text-foreground">
             API
           </a>
-          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-            Status
-          </a> */}
           <a href="https://github.com/new-algeria" className="text-sm text-muted-foreground hover:text-foreground">
             GitHub
           </a>
@@ -460,9 +379,8 @@ const Index = () => {
         </div>
       </footer>
       <div className="my-8 pt-8 px-8 w-full border-t border-primary/10 text-center text-muted-foreground">
-            ©{year || new Date().getFullYear()} Digital Algeria. All Rights Reserved
+        ©{year || new Date().getFullYear()} {t('footer.copyright')}
       </div>
-
     </div>
   );
 };
