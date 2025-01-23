@@ -29,6 +29,19 @@
       "description": "APIs and tools for building the next generation of applications"
     }
   },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": {
+      "digital_transformation": "What is Algeria's digital transformation initiative?",
+      "api_access": "How can developers access the APIs?",
+      "data_types": "What kind of data is available through the platform?"
+    },
+    "answers": {
+      "digital_transformation": "It's a comprehensive program aimed at modernizing public services, providing digital access to government resources, and fostering innovation in the technology sector.",
+      "api_access": "Developers can register through our developer portal to get API keys and access comprehensive documentation for all available services.",
+      "data_types": "We provide access to various types of public data including demographic statistics, economic indicators, and geographical information, all while ensuring privacy and security."
+    }
+  },
   "contact": {
     "title": "Contact Us",
     "subject": "Contact Request - New Algeria Digital Platform",

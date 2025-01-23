@@ -29,6 +29,19 @@
       "description": "APIs et outils pour construire la prochaine génération d'applications"
     }
   },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "questions": {
+      "digital_transformation": "Qu'est-ce que l'initiative de transformation numérique de l'Algérie ?",
+      "api_access": "Comment les développeurs peuvent-ils accéder aux APIs ?",
+      "data_types": "Quels types de données sont disponibles sur la plateforme ?"
+    },
+    "answers": {
+      "digital_transformation": "C'est un programme complet visant à moderniser les services publics, à fournir un accès numérique aux ressources gouvernementales et à favoriser l'innovation dans le secteur technologique.",
+      "api_access": "Les développeurs peuvent s'inscrire via notre portail développeur pour obtenir des clés API et accéder à une documentation complète pour tous les services disponibles.",
+      "data_types": "Nous fournissons l'accès à divers types de données publiques, notamment des statistiques démographiques, des indicateurs économiques et des informations géographiques, tout en garantissant la confidentialité et la sécurité."
+    }
+  },
   "contact": {
     "title": "Contactez-nous",
     "subject": "Demande de Contact - Plateforme Numérique Nouvelle Algérie",
