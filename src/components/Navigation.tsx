@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark");
@@ -16,7 +24,23 @@ const Navigation = () => {
     setIsDark(!isDark);
   };
 
-  const menuItems = ["Home", "Services", "Developers", "Contact"];
+  const handleLanguageChange = (lang: string) => {
+    i18n.changeLanguage(lang);
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  };
+
+  const handleContact = () => {
+    const mailtoLink = `mailto:admin@newalgeria.org?subject=${encodeURIComponent(
+      t('contact.subject')
+    )}&body=${encodeURIComponent(t('contact.body'))}`;
+    window.location.href = mailtoLink;
+  };
+
+  const menuItems = [
+    { key: "home", label: t("nav.home") },
+    { key: "services", label: t("nav.services") },
+    { key: "developers", label: t("nav.developers") },
+  ];
 
   return (
     <nav className="fixed w-full z-50 bg-background/90 backdrop-blur-sm border-b border-primary/10">
@@ -29,15 +53,36 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {/* {menuItems.map((item) => (
+            {menuItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.key}
+                href={`#${item.key}`}
                 className="text-foreground hover:text-primary dark:hover:text-accent transition-colors"
               >
-                {item}
+                {item.label}
               </a>
-            ))} */}
+            ))}
+            
+            {/* Language Selector */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Globe className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('fr')}>
+                  Français
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('ar')}>
+                  العربية
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Button
               variant="outline"
               size="icon"
@@ -46,13 +91,36 @@ const Navigation = () => {
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90">
-              Contact Us
+            
+            <Button 
+              onClick={handleContact}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90"
+            >
+              {t('nav.contact')}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Globe className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('fr')}>
+                  Français
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('ar')}>
+                  العربية
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Button variant="outline" size="icon" onClick={toggleTheme}>
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </Button>
@@ -71,16 +139,19 @@ const Navigation = () => {
             <div className="flex flex-col space-y-4 px-4">
               {menuItems.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={item.key}
+                  href={`#${item.key}`}
                   className="text-foreground hover:text-primary dark:hover:text-accent transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item}
+                  {item.label}
                 </a>
               ))}
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90 w-full">
-                Developer Portal
+              <Button 
+                onClick={handleContact}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-accent dark:hover:bg-accent/90 w-full"
+              >
+                {t('nav.contact')}
               </Button>
             </div>
           </div>

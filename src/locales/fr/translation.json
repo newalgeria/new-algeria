@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "developers": "Développeurs",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Construire un Avenir Numérique pour l'Algérie",
+    "categories": {
+      "innovation": "Innovation",
+      "forward": "Prospective",
+      "accessibility": "Accessibilité",
+      "development": "Développement"
+    }
+  },
+  "services": {
+    "title": "Autonomiser l'Avenir Numérique de l'Algérie",
+    "digital": {
+      "title": "Services Numériques",
+      "description": "Services gouvernementaux rationalisés accessibles à tous les citoyens"
+    },
+    "data": {
+      "title": "Ensembles de Données Utiles",
+      "description": "Accès aux données utiles pour la recherche et le développement"
+    },
+    "dev": {
+      "title": "Outils de Développement",
+      "description": "APIs et outils pour construire la prochaine génération d'applications"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subject": "Demande de Contact - Plateforme Numérique Nouvelle Algérie",
+    "body": "Bonjour,\n\nJe suis intéressé(e) par en savoir plus sur la Plateforme Numérique Nouvelle Algérie.\n\nCordialement,"
+  }
+}

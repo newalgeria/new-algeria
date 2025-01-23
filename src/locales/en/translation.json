@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "developers": "Developers",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Building a Digital Future for Algeria",
+    "categories": {
+      "innovation": "Innovation",
+      "forward": "Forward-Thinking",
+      "accessibility": "Accessibility",
+      "development": "Development"
+    }
+  },
+  "services": {
+    "title": "Empowering Algeria's Digital Future",
+    "digital": {
+      "title": "Digital Services",
+      "description": "Streamlined government services accessible to all citizens"
+    },
+    "data": {
+      "title": "Useful Datasets",
+      "description": "Access to useful data for research and development"
+    },
+    "dev": {
+      "title": "Developer Tools",
+      "description": "APIs and tools for building the next generation of applications"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subject": "Contact Request - New Algeria Digital Platform",
+    "body": "Hello,\n\nI am interested in learning more about the New Algeria Digital Platform.\n\nBest regards,"
+  }
+}
