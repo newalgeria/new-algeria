@@ -1,15 +1,116 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { BorderBeam } from "@/components/ui/border-beam.tsx";
+import { Award, Code, Database, Globe, ChevronRight, Laptop, Shield, Users } from "lucide-react";
+import AvatarCircles from "@/components/ui/avatar-circles";
+import { motion } from "framer-motion";
 import { useYear } from "@/hooks/use-year";
-import Hero from "@/components/sections/Hero";
-import Services from "@/components/sections/Services";
-import FAQ from "@/components/sections/FAQ";
+import { Timeline } from "@/components/ui/timeline";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
   const { t } = useTranslation();
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const timelineData = [
+    {
+      title: "2024",
+      content: (
+        <div>
+          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
+            Built and launched Data-dz from scratch
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-3">
+            <img
+              src="/assets/img/data-dz-1.png"
+              alt="startup template"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <video src="https://github.com/newalgeria/new-algeria/releases/download/0.0.0/data-dz.mp4" autoPlay loop muted
+              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+          </div>
+        </div>
+      ),
+    },
+  ];
+
+  const services = [
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: t('services.digital.title'),
+      description: t('services.digital.description'),
+    },
+    {
+      icon: <Database className="w-8 h-8" />,
+      title: t('services.data.title'),
+      description: t('services.data.description'),
+    },
+    {
+      icon: <Code className="w-8 h-8" />,
+      title: t('services.dev.title'),
+      description: t('services.dev.description'),
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "What is Algeria's digital transformation initiative ?",
+      answer:
+        "It's a comprehensive program aimed at modernizing public services, providing digital access to government resources, and fostering innovation in the technology sector.",
+    },
+    {
+      question: "How can developers access the APIs ?",
+      answer:
+        "Developers can register through our developer portal to get API keys and access comprehensive documentation for all available services.",
+    },
+    {
+      question: "What kind of data is available through the platform ?",
+      answer:
+        "We provide access to various types of public data including demographic statistics, economic indicators, and geographical information, all while ensuring privacy and security.",
+    },
+  ];
+
+  const bentoItems = [
+    {
+      title: "Digital Infrastructure",
+      description: "Building robust digital foundations for Algeria's future",
+      icon: <Laptop className="w-8 h-8" />,
+      color: "bg-emerald-500/10",
+    },
+    {
+      title: "Cybersecurity",
+      description: "Ensuring the safety and security of digital assets",
+      icon: <Shield className="w-8 h-8" />,
+      color: "bg-blue-500/10",
+    },
+    {
+      title: "Community",
+      description: "Fostering a vibrant digital community",
+      icon: <Users className="w-8 h-8" />,
+      color: "bg-purple-500/10",
+    },
+  ];
+
   const { year } = useYear();
 
   const handleContact = () => {
@@ -20,11 +121,194 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <Hero />
-      <Services />
-      <FAQ />
+
+      {/* Hero Section */}
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="min-h-screen flex items-center relative overflow-hidden"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1590846083693-f23fdede3a7e)",
+          }}
+        >
+          <div className="absolute inset-0 bg-primary/50 dark:bg-primary/70" />
+        </div>
+        <div className="container relative z-10 pt-20">
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl md:text-7xl font-bold max-w-3xl mb-8 text-white"
+          >
+            {t('hero.title')}
+          </motion.h1>
+          <motion.div
+            variants={containerVariants}
+            className="flex flex-wrap gap-4 mb-8"
+          >
+            {Object.keys(t('hero.categories', { returnObjects: true })).map((key) => (
+              <motion.span
+                key={key}
+                variants={itemVariants}
+                className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/40 transition-colors"
+              >
+                {t(`hero.categories.${key}`)}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Services Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-20 bg-secondary dark:bg-primary/10"
+      >
+        <div className="container">
+          <motion.h2
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+          >
+            {t('services.title')}
+          </motion.h2>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {services.map((service) => (
+              <motion.div key={service.title} variants={itemVariants}>
+                <Card className="border-2 hover:border-accent transition-colors duration-300">
+                  <CardHeader>
+                    <div className="mb-4 text-primary dark:text-accent">
+                      {service.icon}
+                    </div>
+                    <CardTitle>{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* BentoGrid Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="py-20"
+      >
+        <div className="container">
+          <motion.h2
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+          >
+            Driving Digital{" "}
+            <span className="text-primary dark:text-accent">Innovation</span>
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {bentoItems.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative rounded-xl">
+                  <CardHeader>
+                    <div
+                      className={`w-16 h-16 rounded-lg ${item.color} flex items-center justify-center mb-4`}
+                    >
+                      <div className="text-primary dark:text-accent">
+                        {item.icon}
+                      </div>
+                    </div>
+                    <CardTitle>{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </CardContent>
+                  <BorderBeam
+                   size={250}
+                   duration={Math.floor(Math.random() * (12 - 5 + 1)) + 5}
+                   borderWidth={2}
+                   />
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* historic Section */}
+      <section className="py-20">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            Digital excellence{" "}
+            <span className="text-primary dark:text-accent">
+              by Algerians
+            </span>
+          </h2>
+          <div className="max-w-2xl mx-auto flex flex-col justify-center items-center gap-2">
+          <AvatarCircles className="text-xl py-4" numPeople={0} avatarUrls={[
+            {
+              imageUrl: "https://avatars.githubusercontent.com/u/102315258?v=4",
+              profileUrl: "https://github.com/prosabd",
+            },
+            {
+              imageUrl: "https://avatars.githubusercontent.com/u/61350744?v=4",
+              profileUrl: "https://github.com/berachem",
+            }]} 
+          />
+          </div>
+            <Timeline data={timelineData}/>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-secondary dark:bg-primary/10">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="max-w-2xl mx-auto">
+            <Accordion type="single" collapsible>
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left no-underline hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section className="py-20">
@@ -48,7 +332,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="container mt-10 flex flex-wrap justify-between pb-16 pt-10">
+        <footer className="container mt-10 flex flex-wrap justify-between pb-16 pt-10 mt-20">
         <div className="flex basis-full justify-between gap-8 md:basis-auto md:flex-col md:justify-start">
           <div className="flex items-center gap-5">
             <a href="https://github.com/new-algeria" className="text-muted-foreground hover:text-foreground">
@@ -94,15 +378,39 @@ const Index = () => {
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Features
           </a>
+          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Integrations
+          </a> */}
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Pricing
           </a>
+          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Changelog
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Docs
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Download
+          </a> */}
         </div>
         <div className="mt-10 flex basis-1/2 flex-col gap-5 md:mt-0 md:basis-auto">
           <h3 className="font-semibold">Company</h3>
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             About us
           </a>
+          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Blog
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Careers
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Customers
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Brand
+          </a> */}
         </div>
         <div className="mt-10 flex basis-1/2 flex-col gap-5 md:mt-0 md:basis-auto">
           <h3 className="font-semibold">Resources</h3>
@@ -115,12 +423,24 @@ const Index = () => {
           <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Contact
           </a>
+          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            DPA
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Privacy Policy
+          </a>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Terms of service
+          </a> */}
         </div>
         <div className="mt-10 flex basis-1/2 flex-col gap-5 md:mt-0 md:basis-auto">
           <h3 className="font-semibold">Developers</h3>
           <a href="/api" className="text-sm text-muted-foreground hover:text-foreground">
             API
           </a>
+          {/* <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            Status
+          </a> */}
           <a href="https://github.com/new-algeria" className="text-sm text-muted-foreground hover:text-foreground">
             GitHub
           </a>
@@ -130,7 +450,7 @@ const Index = () => {
         </div>
       </footer>
       <div className="my-8 pt-8 px-8 w-full border-t border-primary/10 text-center text-muted-foreground">
-        ©{year || new Date().getFullYear()} Digital Algeria. All Rights Reserved
+            ©{year || new Date().getFullYear()} Digital Algeria. All Rights Reserved
       </div>
     </div>
   );
