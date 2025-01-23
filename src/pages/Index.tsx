@@ -9,8 +9,11 @@ import AvatarCircles from "@/components/ui/avatar-circles";
 import { motion } from "framer-motion";
 import { useYear } from "@/hooks/use-year";
 import { Timeline } from "@/components/ui/timeline";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+  const { t } = useTranslation();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,29 +48,27 @@ const Index = () => {
             <video src="https://github.com/newalgeria/new-algeria/releases/download/0.0.0/data-dz.mp4" autoPlay loop muted
               className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
-            </div>
+          </div>
         </div>
       ),
     },
-  ]
+  ];
 
   const services = [
     {
       icon: <Globe className="w-8 h-8" />,
-      title: "Digital Services",
-      description: "Streamlined government services accessible to all citizens",
+      title: t('services.digital.title'),
+      description: t('services.digital.description'),
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: "Useful Datasets",
-      description:
-        "Access to useful data for research and development",
+      title: t('services.data.title'),
+      description: t('services.data.description'),
     },
     {
       icon: <Code className="w-8 h-8" />,
-      title: "Developer Tools",
-      description:
-        "APIs and tools for building the next generation of applications",
+      title: t('services.dev.title'),
+      description: t('services.dev.description'),
     },
   ];
 
@@ -137,20 +138,20 @@ const Index = () => {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold max-w-3xl mb-8 text-white"
           >
-            Building a Digital Future for Algeria
+            {t('hero.title')}
           </motion.h1>
           <motion.div
             variants={containerVariants}
             className="flex flex-wrap gap-4 mb-8"
           >
-            {["Innovation", "Forward-Thinking", "Accessibility", "Development"].map(
-              (category) => (
+            {Object.entries(t('hero.categories', { returnObjects: true })).map(
+              ([key, value]) => (
                 <motion.span
-                  key={category}
+                  key={key}
                   variants={itemVariants}
                   className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/40 transition-colors"
                 >
-                  {category}
+                  {value}
                 </motion.span>
               )
             )}
@@ -173,10 +174,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-12 text-center"
           >
-            Empowering Algeria's{" "}
-            <span className="text-primary dark:text-accent">
-              Digital Future
-            </span>
+            {t('services.title')}
           </motion.h2>
           <motion.div
             variants={containerVariants}
@@ -464,6 +462,7 @@ const Index = () => {
       <div className="my-8 pt-8 px-8 w-full border-t border-primary/10 text-center text-muted-foreground">
             ©{year || new Date().getFullYear()} Digital Algeria. All Rights Reserved
       </div>
+
     </div>
   );
 };
