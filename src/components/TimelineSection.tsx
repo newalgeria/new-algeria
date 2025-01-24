@@ -42,7 +42,7 @@ const TimelineSection = () => {
   React.useEffect(() => {
     const fetchCollaborators = async () => {
       const orgName = "new-algeria";
-      const token = process.env.GITHUB_COLLABORATORS_TOKEN;
+      const token = import.meta.env.VITE_GITHUB_COLLABORATORS_TOKEN;
       const url = `https://api.github.com/orgs/${orgName}/members`;
 
       try {
